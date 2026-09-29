@@ -21,3 +21,7 @@ Then use VS Code's **Ports** view to open the forwarded port in a browser.
 ## Main file
 
 [Open the page](index.html)
+
+~~~markdown
+This page is a small, team and personal oriented example of a shared software project.
+~~~
