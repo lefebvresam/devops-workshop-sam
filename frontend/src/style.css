@@ -178,6 +178,28 @@ button:focus-visible {
   color: var(--accent-dark);
 }
 
+.info-list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.info-list div {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  gap: 1rem;
+}
+
+.info-list dt {
+  color: var(--muted);
+}
+
+.info-list dd {
+  margin: 0;
+  color: var(--text);
+  font-weight: 600;
+}
+
 .theme-status {
   margin: 0.75rem 0 0;
   font-size: 0.9rem;
@@ -212,6 +234,11 @@ button:focus-visible {
 
   .actions {
     flex-direction: column;
+  }
+
+  .info-list div {
+    grid-template-columns: 1fr;
+    gap: 0;
   }
 
   .site-nav ul {

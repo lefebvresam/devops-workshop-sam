@@ -1,4 +1,5 @@
 import os
+import platform
 
 from fastapi import FastAPI
 
@@ -7,6 +8,10 @@ app = FastAPI(title="Workshop Welcome Board API")
 
 def team_name() -> str:
     return os.getenv("WORKSHOP_TEAM_NAME", "Workshop team")
+
+
+def workshop_label() -> str:
+    return os.getenv("WORKSHOP_LABEL", "DevOps workshop")
 
 
 @app.get("/api/health")
@@ -22,3 +27,10 @@ def welcome() -> dict[str, str]:
         "team": team,
     }
 
+
+@app.get("/api/workshop-info")
+def workshop_info() -> dict[str, str]:
+    return {
+        "workshop": workshop_label(),
+        "python_version": platform.python_version(),
+    }
