@@ -17,6 +17,7 @@ services:
       dockerfile: backend/Dockerfile
     environment:
       WORKSHOP_TEAM_NAME: Saleconix
+      WORKSHOP_LABEL: VIVES DevOps workshop
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health', timeout=2)"]
       interval: 5s

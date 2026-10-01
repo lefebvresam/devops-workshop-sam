@@ -1,3 +1,5 @@
 # Local editor and operating-system clutter
 .DS_Store
 *.log
+__pycache__/
+.venv/

@@ -36,3 +36,23 @@ themeButton.addEventListener("click", () => {
     nextTheme === "dark" ? "Switch to light theme" : "Switch to dark theme";
   themeStatus.textContent = themeDescriptions[nextTheme];
 });
+
+const infoWorkshop = document.getElementById("info-workshop");
+const infoPython = document.getElementById("info-python");
+
+async function loadWorkshopInfo() {
+  try {
+    const response = await fetch("/api/workshop-info");
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+    const info = await response.json();
+    infoWorkshop.textContent = info.workshop;
+    infoPython.textContent = info.python_version;
+  } catch (error) {
+    infoWorkshop.textContent = "Not available right now";
+    infoPython.textContent = "Not available right now";
+  }
+}
+
+loadWorkshopInfo();
