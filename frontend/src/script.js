@@ -55,4 +55,4 @@ async function loadWorkshopVersionInfo() {
   }
 }
 
-loadWorkshopInfo();
+loadWorkshopVersionInfo();
