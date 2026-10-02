@@ -28,9 +28,16 @@ def welcome() -> dict[str, str]:
     }
 
 
-@app.get("/api/workshop-info")
-def workshop_info() -> dict[str, str]:
+@app.get("/api/workshop-version-info")
+def workshop_version_info() -> dict[str, str]:
     return {
         "workshop": workshop_label(),
         "python_version": platform.python_version(),
+    }
+
+@app.get("/api/workshop-info")
+def workshop_info() -> dict[str, str]:
+    return {
+        "language": "Python",
+        "workspace": "Dev Container",
     }

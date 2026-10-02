@@ -1,0 +1,25 @@
+{
+  "name": "Workshop Python development",
+  "dockerComposeFile": [
+    "../compose.yaml",
+    "compose.devcontainer.yaml"
+  ],
+  "service": "workspace",
+  "runServices": [
+    "frontend",
+    "backend",
+    "workspace"
+  ],
+  "workspaceFolder": "/workspaces/workshop",
+  "remoteUser": "vscode",
+  "shutdownAction": "stopCompose",
+  "postCreateCommand": "python -m pip install --no-cache-dir -r backend/requirements-dev.txt && ./scripts/verify-devcontainer.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "charliermarsh.ruff"
+      ]
+    }
+  }
+}

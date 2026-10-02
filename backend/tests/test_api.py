@@ -1,6 +1,6 @@
 import platform
 
-from app.main import health, welcome, workshop_info
+from app.main import health, welcome, workshop_info, workshop_version_info
 
 
 def test_health() -> None:
@@ -13,16 +13,21 @@ def test_welcome_uses_a_default_team_name(monkeypatch) -> None:
     assert welcome()["team"] == "Workshop team"
 
 
-def test_workshop_info_uses_a_default_label(monkeypatch) -> None:
+def test_workshop_version_info_uses_a_default_label(monkeypatch) -> None:
     monkeypatch.delenv("WORKSHOP_LABEL", raising=False)
 
-    assert workshop_info() == {
+    assert workshop_version_info() == {
         "workshop": "DevOps workshop",
         "python_version": platform.python_version(),
     }
 
-
-def test_workshop_info_uses_the_label_from_the_environment(monkeypatch) -> None:
+def test_workshop_version_info_uses_the_label_from_the_environment(monkeypatch) -> None:
     monkeypatch.setenv("WORKSHOP_LABEL", "Test workshop")
 
-    assert workshop_info()["workshop"] == "Test workshop"
+    assert workshop_version_info()["workshop"] == "Test workshop"
+
+def test_workshop_info() -> None:
+    assert workshop_info() == {
+        "language": "Python",
+        "workspace": "Dev Container",
+    }
