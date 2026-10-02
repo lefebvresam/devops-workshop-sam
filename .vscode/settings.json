@@ -1,0 +1,17 @@
+{
+  "workbench.editorAssociations": {
+    "*.md": "vscode.markdown.preview.editor"
+  },
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.minimap.enabled": false
+  },
+  "python.testing.pytestEnabled": true,
+  "python.testing.cwd": "${workspaceFolder}/backend",
+  "python.testing.pytestArgs": [
+    "tests"
+  ],
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}/backend"
+  ]
+}

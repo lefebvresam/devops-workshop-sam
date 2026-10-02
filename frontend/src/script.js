@@ -40,9 +40,9 @@ themeButton.addEventListener("click", () => {
 const infoWorkshop = document.getElementById("info-workshop");
 const infoPython = document.getElementById("info-python");
 
-async function loadWorkshopInfo() {
+async function loadWorkshopVersionInfo() {
   try {
-    const response = await fetch("/api/workshop-info");
+    const response = await fetch("/api/workshop-version-info");
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }
@@ -55,4 +55,4 @@ async function loadWorkshopInfo() {
   }
 }
 
-loadWorkshopInfo();
+loadWorkshopVersionInfo();
