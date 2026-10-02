@@ -1,5 +1,5 @@
 {
-  "name": "Workshop Python development",
+  "name": "Workshop Saleconix",
   "dockerComposeFile": [
     "../compose.yaml",
     "compose.devcontainer.yaml"
@@ -18,7 +18,8 @@
     "vscode": {
       "extensions": [
         "ms-python.python",
-        "charliermarsh.ruff"
+        "charliermarsh.ruff",
+        "ms-python.debugpy"
       ]
     }
   }
