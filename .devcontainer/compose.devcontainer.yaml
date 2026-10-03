@@ -3,7 +3,24 @@ services:
     build:
       context: .
       dockerfile: .devcontainer/Dockerfile
-    command: sleep infinity
+    command:
+      - python
+      - -m
+      - debugpy
+      - --listen
+      - 0.0.0.0:5678
+      - -m
+      - uvicorn
+      - app.main:app
+      - --app-dir
+      - /workspaces/workshop/backend
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8000"
+    environment:
+      WORKSHOP_TEAM_NAME: Saleconix
+      WORKSHOP_LABEL: VIVES DevOps workshop
     init: true
     volumes:
       - .:/workspaces/workshop
