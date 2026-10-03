@@ -17,5 +17,8 @@ ENV PATH="/opt/venv/bin:${PATH}"
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
+COPY backend/requirements.txt backend/requirements-dev.txt /tmp/backend/
+RUN python -m pip install --no-cache-dir -r /tmp/backend/requirements-dev.txt
+
 WORKDIR /workspaces/workshop
 USER ${USERNAME}
