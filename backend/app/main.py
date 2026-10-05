@@ -16,7 +16,7 @@ def workshop_label() -> str:
 
 @app.get("/api/health")
 def health() -> dict[str, str]:
-    return {"status": "ok"
+    return {"status": "ok"}
 
 
 @app.get("/api/welcome")
