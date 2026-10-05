@@ -21,7 +21,29 @@ services:
     environment:
       WORKSHOP_TEAM_NAME: Saleconix
       WORKSHOP_LABEL: VIVES DevOps workshop
+      CLAUDE_CONFIG_DIR: /home/vscode/.claude
     init: true
     volumes:
       - .:/workspaces/workshop
+      - claude-config:/home/vscode/.claude
     working_dir: /workspaces/workshop
+
+  # Relay localhost:8080 inside the dev container to the frontend, so VS Code
+  # can forward it to the laptop as localhost:8080.
+  frontend-forward:
+    image: alpine/socat
+    network_mode: service:workspace
+    command: TCP-LISTEN:8080,fork,reuseaddr TCP:frontend:80
+    depends_on:
+      - workspace
+      - frontend
+    restart: unless-stopped
+
+  # VS Code forwards 8080 now; publishing it on the Docker host as well
+  # would clash with that forward when Docker runs on the laptop.
+  frontend:
+    ports: !reset []
+
+volumes:
+  claude-config:
+    name: workshop-claude-config

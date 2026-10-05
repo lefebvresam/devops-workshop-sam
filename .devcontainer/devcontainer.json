@@ -7,20 +7,30 @@
   "service": "workspace",
   "runServices": [
     "frontend",
+    "frontend-forward",
     "backend",
     "workspace"
   ],
   "workspaceFolder": "/workspaces/workshop",
-  "forwardPorts": [8000, 5678],
+  "forwardPorts": [8080, 8000, 5678],
+  "portsAttributes": {
+    "8080": { "label": "Frontend", "requireLocalPort": true },
+    "8000": { "label": "Backend API" },
+    "5678": { "label": "debugpy" }
+  },
   "remoteUser": "vscode",
   "shutdownAction": "stopCompose",
   "postCreateCommand": "./scripts/verify-devcontainer.sh",
   "customizations": {
     "vscode": {
+      "settings": {
+        "claudeCode.preferredLocation": "sidebar"
+      },
       "extensions": [
         "ms-python.python",
         "charliermarsh.ruff",
-        "ms-python.debugpy"
+        "ms-python.debugpy",
+        "anthropic.claude-code"
       ]
     }
   }

@@ -8,6 +8,8 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends bash ca-certificates curl git \
     && groupadd --gid "${USER_GID}" "${USERNAME}" \
     && useradd --uid "${USER_UID}" --gid "${USER_GID}" --create-home --shell /bin/bash "${USERNAME}" \
+    && mkdir -p "/home/${USERNAME}/.claude" \
+    && chown "${USERNAME}:${USERNAME}" "/home/${USERNAME}/.claude" \
     && python -m venv /opt/venv \
     && chown -R "${USERNAME}:${USERNAME}" /opt/venv \
     && rm -rf /var/lib/apt/lists/*
