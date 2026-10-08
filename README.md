@@ -81,6 +81,25 @@ Then use VS Code's **Ports** view to open the forwarded port in a browser.
 - It uses plain HTML, CSS and JavaScript.
 - It has no external dependencies or network requests.
 
+## Security checks
+
+Pull requests to `main` must pass these checks:
+
+| Check | Workflow | Why it is required |
+|---|---|---|
+| `verify-python-api` | `verify.yml` | Fast and deterministic; runs the API's syntax check and tests. |
+| `workshop-policy` | `quality-gate.yml` | Takes seconds; rejects the workshop training marker, which no other check covers. |
+| `dependency-review` | `dependency-review.yml` | Fast and only runs on pull requests; blocks new dependencies with high-severity vulnerabilities. |
+
+These checks are deliberately not required:
+
+- `smoke-test` runs only when started by hand and depends on one self-hosted runner.
+- `deployment-handoff` runs only after a merge to `main`, so it never reports on a pull request.
+
+GitHub secret scanning with push protection and Dependabot alerts are enabled in the repository settings. Dependabot also proposes weekly updates for the pinned Python packages and the GitHub Actions versions.
+
+If a real credential leaks, follow [Responding to a leaked credential](docs/credential-response.md). Record any temporary exception in [Security exceptions](docs/security-exceptions.md).
+
 ## Main file
 
 [Open the page](index.html)
