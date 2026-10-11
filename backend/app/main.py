@@ -14,9 +14,24 @@ def workshop_label() -> str:
     return os.getenv("WORKSHOP_LABEL", "DevOps workshop")
 
 
+def release_info() -> dict[str, str]:
+    version = os.getenv("WORKSHOP_RELEASE_VERSION", "").strip() or "dev"
+    revision = os.getenv("WORKSHOP_REVISION", "").strip() or "unknown"
+    return {
+        "status": "ok",
+        "version": version,
+        "revision": revision,
+    }
+
+
 @app.get("/api/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}
+
+
+@app.get("/api/release")
+def release() -> dict[str, str]:
+    return release_info()
 
 
 @app.get("/api/welcome")
