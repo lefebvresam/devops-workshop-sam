@@ -18,6 +18,8 @@ services:
     environment:
       WORKSHOP_TEAM_NAME: Saleconix
       WORKSHOP_LABEL: VIVES DevOps workshop
+      WORKSHOP_RELEASE_VERSION: lab-7
+      WORKSHOP_REVISION: local
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health', timeout=2)"]
       interval: 5s
